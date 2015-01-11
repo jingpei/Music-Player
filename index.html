@@ -1,0 +1,360 @@
+<html lang="en">
+<title>Current Favorites</title>
+<style>
+	body{
+		overflow: noscroll;
+	}
+
+	.container{
+		padding-top: 30px;
+	}
+	#content {
+		width: 300px;
+		height: 500px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-bottom: 20px;
+		background-color: #a1d9db;
+		border-radius: 0px 0px 10px 10px;
+		overflow: auto;
+	}
+
+	#content::-webkit-scrollbar{
+		width: 8px;
+	}
+
+	#content::-webkit-scrollbar-track {
+		background-color: #a1d9db;
+		border-left: 1px solid #a1d9db;
+	}
+
+	#content::-webkit-scrollbar-thumb {
+		background-color: #85b3b5;
+	}
+
+	#content::-webkit-scrollbar-thumb:hover {
+		background-color: #8ebfc1;
+	}
+
+	#globalplayer {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 10px;
+		padding-bottom: 20px;
+		background-color: #a1d9db;
+		border-radius: 10px 10px 0px 0px;
+	}
+
+	h1{
+		text-align: center;
+		font-family: Helvetica;
+		font-weight: 1px;
+	}
+
+	#controls {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 10px;
+		white-space: nowrap;
+	}
+
+	img{
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+
+	#volumecontrol {
+		display: inline-block;
+		vertical-align: 10px;
+		padding-left: 5px;
+	}
+
+	#progress_bar{
+		width: 250px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	progress[value]{
+		-webkit-appearance:none;
+		appearance:none;
+		cursor: pointer;
+
+		width:250px;
+		height: 15px;
+	}
+
+	progress:not([value]){
+		-webkit-appearance:none;
+		appearance:none;
+		cursor: pointer;
+
+		width:250px;
+		height: 15px;
+	}
+
+	progress[value]::-webkit-progress-bar {
+		background-color: #f3f3f3;
+		border-radius: 2px;
+		border: none;
+		box-shadow: 0 2px 5px #afafaf inset;
+	}
+
+	progress:not([value])::-webkit-progress-bar {
+		background-color: #f3f3f3;
+		border-radius: 2px;
+		border: none;
+		box-shadow: 0 2px 5px #afafaf inset;
+	}
+
+	progress[value]::-webkit-progress-value {
+		border-radius: 2px;
+		background-color: #009999;
+		box-shadow: 0 1px 1px #afafaf inset;
+		content: '80%';
+
+		/*background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #09c, #f44);*/
+	}
+
+	progress.volume_track:not([value]){
+		-webkit-appearance:none;
+		appearance:none;
+		cursor: pointer;
+
+		width: 190px;
+		height: 7px;
+	}
+
+	progress.volume_track[value]{
+		-webkit-appearance:none;
+		appearance:none;
+		cursor: pointer;
+
+		width: 190px;
+		height: 7px;
+	}
+
+	progress::-moz-progress-bar { 
+		background: #009999; 
+		border: none;
+	}
+	ul, li{
+		list-style-image: url('play.png');
+		padding-right: 30px;
+	}
+
+	li{
+		margin-right: auto;
+		margin-left: auto;
+		font-family: Helvetica;
+		font-size: 12px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-right: 10px;
+		border-bottom: 1px solid black;
+		cursor: pointer;
+		
+		-webkit-touch-callout: none;
+    	-webkit-user-select: none;
+    	-khtml-user-select: none;
+    	-moz-user-select: none;
+    	-ms-user-select: none;
+    	user-select: none;
+	}
+
+	#playing{
+		list-style-image: url('playing.png');
+		font-style: oblique;
+	}
+
+	#paused{
+		list-style-image: url('pause.png');
+	}
+
+</style>
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+<body>
+	<div class="container">
+		<div id="globalplayer">
+			<h1>Music Player</h1>
+			<div id="controls">
+				<img src="globalplay.png" class="play">
+				<img src="globalpause.png" class="pause">
+				<div id="volumecontrol">
+					<progress class="volume_track">Volume</progress>
+				</div>
+			</div>
+			<div id="progress_bar">
+				<progress class="music_progress">Progress Bar</progress>
+			</div>
+		</div>
+		<div id="content">
+			<ul class="music_list">
+				<li data-src="Always_Need.mp3">Always Where I Need to Be</li>
+				<li data-src="Blank_Space.mp3">Blank Space</li>
+				<li data-src="Broken_Hearted.mp3">Broken Hearted</li>
+				<li data-src="Clarity.mp3">Clarity</li>
+				<li data-src="Demons.mp3">Demons</li>
+				<li data-src="Everyday.mp3">Everyday</li>
+				<li data-src="Feather.mp3">Feather</li>
+				<li data-src="Good_Girl.mp3">Good Girl Bad Girl</li>
+				<li data-src="Heart_Wants.mp3">The Heart Wants What It Wants</li>
+				<li data-src="Need_Love.mp3">I Need Your Love</li>
+				<li data-src="Otherside.mp3">Otherside</li>
+				<li data-src="Pumped_Kicks.mp3">Pumped Up Kicks</li>
+				<li data-src="Radioactive.mp3">Radioactive</li>
+				<li data-src="Reptilia.mp3">Reptilia</li>
+				<li data-src="Shower.mp3">Shower</li>
+				<li data-src="Skinny_Love.m4a">Skinny Love</li>
+				<li data-src="Steal_Girl.mp3">Steal My Girl</li>
+				<li data-src="Team.mp3">Team</li>
+				<li data-src="Never_Dressed.mp3">You're Never Fully Dressed Without a Smile</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	var jukebox = document.querySelector('ul.music_list');
+	jukebox.addEventListener('click', function(e){
+		var songName = e.target.getAttribute('data-src');
+		var existingPlayer = document.querySelector('#player');
+		var pBar = document.querySelector('progress.music_progress');
+		var vBar = document.querySelector('progress.volume_track');
+
+		if(existingPlayer){
+			if (songName===existingPlayer.getAttribute('src')){
+				if(existingPlayer.paused){
+					existingPlayer.play();
+					e.target.id='playing';
+				} else{
+					existingPlayer.pause();
+					//pBar.setAttribute('max', existingPlayer.duration);
+					//pBar.setAttribute('value', existingPlayer.currentTime);
+					e.target.id='paused';
+				}
+
+
+			} else{
+				var wasPlaying = document.querySelector('li#playing');
+				var wasPaused = document.querySelector('li#paused');
+				if(wasPlaying){
+					wasPlaying.id = '';	
+				}
+				if(wasPaused){
+					wasPaused.id = '';
+				}
+				var currentVol = existingPlayer.volume;
+				existingPlayer.pause();
+				existingPlayer.src = songName;
+				existingPlayer.play();
+				existingPlayer.volume = currentVol;
+				e.target.id = 'playing';
+			}
+
+
+
+		} else{
+			var audioPlayer = document.createElement('audio');
+			audioPlayer.src = songName;
+			audioPlayer.id = 'player';
+			e.target.id = 'playing';
+			document.body.appendChild(audioPlayer);
+			audioPlayer.play();
+			audioPlayer.volume = 0.5;
+
+			vBar.setAttribute('max', 1);
+			vBar.setAttribute('value', .5);
+
+			audioPlayer.addEventListener('timeupdate', function(d){
+				var max = audioPlayer.duration;
+				var currentSongTime = audioPlayer.currentTime;
+				pBar.setAttribute('max', max);
+				pBar.setAttribute('value', currentSongTime);
+			}, false);
+
+
+			audioPlayer.addEventListener('ended', function(f){
+				e.target.id='';
+				audioPlayer.parentNode.removeChild(audioPlayer);
+				pBar.setAttribute('max',0);
+				pBar.setAttribute('value',0);
+			}, false);
+
+		}
+
+	}, false);
+
+
+	var updateVolumeBar = document.querySelector('progress.volume_track');
+	updateVolumeBar.addEventListener('click', function(e){
+		var vBarUpdateValue = ((e.clientX-updateVolumeBar.offsetLeft))/(updateVolumeBar.offsetWidth);
+		var existingPlayer = document.querySelector('audio#player');
+		if (existingPlayer){
+			existingPlayer.volume = vBarUpdateValue;
+			updateVolumeBar.setAttribute('value', vBarUpdateValue);
+		}
+
+	}, false);
+
+	var updateProgressBar = document.querySelector('progress.music_progress');
+	updateProgressBar.addEventListener('click', function(e){
+		var pBarUpdateValue = ((e.clientX-updateProgressBar.offsetLeft) * updateProgressBar.max)/(updateProgressBar.offsetWidth);
+		var existingPlayer = document.querySelector('audio#player');
+		if (existingPlayer){
+			existingPlayer.currentTime = pBarUpdateValue;
+			updateProgressBar.setAttribute('value', pBarUpdateValue);
+		}
+
+	}, false);
+
+	var globalPlayButton = document.querySelector('img.play');
+	var globalPauseButton = document.querySelector('img.play');
+	globalPlayButton.addEventListener('click', function(e){
+		var existingPlayer = document.querySelector('audio#player');
+		if(existingPlayer){
+			if (existingPlayer.paused){
+				globalPlayButton.setAttribute('src', "globalplaying.png");
+				globalPauseButton.setAttribute('src', "globalpause.png");
+				existingPlayer.play();
+			}
+		}
+	}, false);
+
+	globalPauseButton.addEventListener('click', function(e){
+		var existingPlayer = document.querySelector('audio#player');
+		var playSource = globalPauseButton.getAttribute('src');
+		if(existingPlayer){
+			if (!existingPlayer.paused){
+				globalPlayButton.setAttribute('src', "globalplay.png");
+				globalPauseButton.setAttribute('src', "globalpausing.png");
+				existingPlayer.pause();
+			} 
+		}
+	}, false);
+
+
+	window.addEventListener('resize', function(e){
+		var heightAdjust = window.innerHeight;
+		var widthAdjust = window.innerWidth;
+		document.querySelector('#content').style.height = heightAdjust - 240;
+	}, false);
+
+	window.addEventListener('load', function(e){
+		var heightAdjust = window.innerHeight;
+		document.querySelector('#content').style.height = heightAdjust - 240;
+	}, false);
+</script>
